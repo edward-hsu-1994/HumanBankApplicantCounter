@@ -87,7 +87,7 @@ var Bank_104 = (function () {
             });
         });
     };
-    Bank_104.api = "https://www.104.com.tw/jb/104i/applyAnalysisToJob/sex?job_no=";
     return Bank_104;
 }());
+Bank_104.api = "https://www.104.com.tw/jb/104i/applyAnalysisToJob/sex?job_no=";
 App.counter = new Bank_104();

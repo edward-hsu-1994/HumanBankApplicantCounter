@@ -33,7 +33,7 @@ class Bank_1111 implements IBank {
             finalMin = Math.min(finalMin,temp_min);            
         }
         function $(){}//Fix not found JQuery
-        let scriptString = targetScript.innerHTML.innerString("$(document).ready(function () {","$(\"#comCollect1\")");
+        let scriptString = targetScript.innerHTML.innerString("$(document).ready(function () {","if");
         eval(scriptString);
         return Math.floor((1/finalMin) * 100);
     }
