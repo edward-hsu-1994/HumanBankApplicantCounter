@@ -5,11 +5,11 @@
     "version": "1.0.1",
     "author": "Pei-Yao Xu",
     "content_scripts": [{
-        "matches": ["https://www.1111.com.tw/job-bank/job-index.asp?*"],
+        "matches": ["*://www.1111.com.tw/job-bank/job-index.asp?*"],
         "js": ["Http.js","Main.js","banks/Bank_1111.js","Startup.js"]
     },
     {
-        "matches": ["https://www.104.com.tw/jobbank/joblist/joblist.cfm?*"],
+        "matches": ["*://www.104.com.tw/jobbank/joblist/joblist.cfm?*"],
         "js": ["Http.js","Main.js","banks/Bank_104.js","Startup.js"]
     }],
     "permissions": []
