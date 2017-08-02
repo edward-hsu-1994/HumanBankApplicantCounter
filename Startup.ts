@@ -1,0 +1,1 @@
+App.counter.init();

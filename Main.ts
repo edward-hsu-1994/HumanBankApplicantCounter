@@ -3,9 +3,9 @@ interface String {
 }
 
 String.prototype.innerString = function (start: string, end: string): string {
-    var index = this.indexOf(start);
+    let index = this.indexOf(start);
     if (index < 0) return null;
-    var result:string = this.substring(index + start.length);
+    let result:string = this.substring(index + start.length);
     index = result.indexOf(end);
     if (index < 0) return null;
     return result.substring(0, index);

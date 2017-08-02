@@ -1,4 +1,4 @@
 interface IBank{
-    getApplicantCount(url: string):Promise<number>;
+    getApplicantCount(url: string, min: number, max: number):Promise<number>;
     init():Promise<void>;
 }
