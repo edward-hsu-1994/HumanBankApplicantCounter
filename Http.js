@@ -177,6 +177,6 @@ var HttpResponse = (function () {
         }
         return result;
     };
+    HttpResponse.defaultJSONHandler = null;
     return HttpResponse;
 }());
-HttpResponse.defaultJSONHandler = null;
