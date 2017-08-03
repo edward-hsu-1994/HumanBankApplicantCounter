@@ -56,16 +56,25 @@ var Bank_104 = (function () {
                         switch (_a.label) {
                             case 0:
                                 jobList = document.querySelectorAll(".j_cont");
+                                if (jobList.length == 0) {
+                                    jobList = document.querySelectorAll(".joblist_cont");
+                                }
                                 i = 0;
                                 _a.label = 1;
                             case 1:
                                 if (!(i < jobList.length)) return [3 /*break*/, 4];
                                 job = jobList[i].querySelector(".apply_job");
+                                if (job == null)
+                                    job = jobList[i];
                                 if (job && job['HumanBankApplicantCounter'] == true)
                                     return [3 /*break*/, 3];
                                 job['HumanBankApplicantCounter'] = true;
                                 id = job.getAttribute("id");
+                                if (!/^\d+$/.test(id))
+                                    id = jobList[i].querySelector("input[name='to_cookie']").value;
                                 countInfo = jobList[i].querySelector(".candidates_summary>a");
+                                if (countInfo == null)
+                                    countInfo = jobList[i].querySelector(".float_R > a");
                                 return [4 /*yield*/, this.getApplicantCount(Bank_104.api + id, 0, 0)];
                             case 2:
                                 count = _a.sent();

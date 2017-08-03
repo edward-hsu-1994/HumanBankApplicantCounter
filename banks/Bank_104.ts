@@ -8,13 +8,21 @@ class Bank_104 implements IBank {
     public async initList(): Promise<void> {
         this.scrollFunction = async () => {
             let jobList: NodeListOf<Element> = document.querySelectorAll(".j_cont");
+            if(jobList.length ==0){
+                jobList = document.querySelectorAll(".joblist_cont");
+            }
             for (let i = 0; i < jobList.length; i++) {
                 let job = jobList[i].querySelector(".apply_job");
+                if(job==null)job = jobList[i];
+
                 if (job && job['HumanBankApplicantCounter'] == true) continue;
                 job['HumanBankApplicantCounter'] = true;
-                let id = job.getAttribute("id");
-                let countInfo = jobList[i].querySelector(".candidates_summary>a");
 
+                let id = job.getAttribute("id");
+                if(!/^\d+$/.test(id))id=(<any>jobList[i].querySelector("input[name='to_cookie']")).value;
+
+                let countInfo = jobList[i].querySelector(".candidates_summary>a");
+                if(countInfo ==null) countInfo = jobList[i].querySelector(".float_R > a");
                 let count = await this.getApplicantCount(Bank_104.api + id, 0, 0);
                 try {
                     countInfo.innerHTML = `${count} 人應徵`;

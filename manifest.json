@@ -6,13 +6,36 @@
     "author": "Pei-Yao Xu",
     "content_scripts": [
         {
+            "matches":[
+                "*://www.1111.com.tw/*",
+                "*://www.104.com.tw/*"
+            ],
+            "js":[
+                "Http.js",
+                "Main.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://www.1111.com.tw/*"
+            ],
+            "js": [
+                "banks/Bank_1111.js"
+            ]
+        },
+        {
             "matches": [
                 "*://www.1111.com.tw/job-bank/job-index.asp?*"
             ],
             "js": [
-                "Http.js",
-                "Main.js",
-                "banks/Bank_1111.js",
+                "StartupList.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://www.1111.com.tw/corp/*"
+            ],
+            "js": [
                 "StartupList.js"
             ]
         },
@@ -21,10 +44,15 @@
                 "*://www.1111.com.tw/job/*"
             ],
             "js": [
-                "Http.js",
-                "Main.js",
-                "banks/Bank_1111.js",
                 "StartupPage.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://www.104.com.tw/*"
+            ],
+            "js": [
+                "banks/Bank_104.js"
             ]
         },
         {
@@ -32,9 +60,14 @@
                 "*://www.104.com.tw/jobbank/joblist/joblist.cfm?*"
             ],
             "js": [
-                "Http.js",
-                "Main.js",
-                "banks/Bank_104.js",
+                "StartupList.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://www.104.com.tw/jobbank/custjob/index.php?*"
+            ],
+            "js": [
                 "StartupList.js"
             ]
         },
@@ -43,9 +76,6 @@
                 "*://www.104.com.tw/job/?*"
             ],
             "js": [
-                "Http.js",
-                "Main.js",
-                "banks/Bank_104.js",
                 "StartupPage.js"
             ]
         }
