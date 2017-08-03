@@ -86,45 +86,119 @@ var Bank_1111 = (function () {
     };
     Bank_1111.prototype.initList = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var jobList, i, a, range, count, e_1;
+            var _this = this;
+            var jobList, i, a, range, count, e_1, e_2, i, a, range, count, e_3, e_4, navButton, i, THIS;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         jobList = document.querySelectorAll(".recruit > a");
+                        if (!(jobList.length > 0)) return [3 /*break*/, 12];
                         i = 0;
                         _a.label = 1;
                     case 1:
-                        if (!(i < jobList.length)) return [3 /*break*/, 8];
+                        if (!(i < jobList.length)) return [3 /*break*/, 11];
                         a = jobList.item(i);
                         range = void 0, count = void 0;
                         _a.label = 2;
                     case 2:
-                        _a.trys.push([2, 4, , 6]);
+                        _a.trys.push([2, 4, , 9]);
                         range = a.title.match(/\d+\s*~\s*\d+/)[0].split("~").map(function (x) { return parseInt(x); });
                         return [4 /*yield*/, this.getApplicantCount(a.href, range[0], range[1])];
                     case 3:
                         count = _a.sent();
-                        return [3 /*break*/, 6];
+                        return [3 /*break*/, 9];
                     case 4:
                         e_1 = _a.sent();
-                        return [4 /*yield*/, this.getApplicantCount(a.href, 50, 100)];
+                        _a.label = 5;
                     case 5:
-                        count = _a.sent();
-                        return [3 /*break*/, 6];
+                        _a.trys.push([5, 7, , 8]);
+                        return [4 /*yield*/, this.getApplicantCount(a.href, 50, 100)];
                     case 6:
-                        jobList.item(i).innerHTML = count + " \u4EBA\u61C9\u5FB5";
-                        _a.label = 7;
+                        count = _a.sent();
+                        return [3 /*break*/, 8];
                     case 7:
+                        e_2 = _a.sent();
+                        return [3 /*break*/, 8];
+                    case 8: return [3 /*break*/, 9];
+                    case 9:
+                        jobList.item(i).innerHTML = count + " \u4EBA\u61C9\u5FB5";
+                        _a.label = 10;
+                    case 10:
                         i++;
                         return [3 /*break*/, 1];
-                    case 8: return [2 /*return*/];
+                    case 11: return [3 /*break*/, 29];
+                    case 12: return [4 /*yield*/, App.waitLoading()];
+                    case 13:
+                        _a.sent();
+                        _a.label = 14;
+                    case 14:
+                        jobList = document.querySelectorAll("#showResultList > .digest");
+                        return [4 /*yield*/, App.sleep(1000)];
+                    case 15:
+                        _a.sent();
+                        _a.label = 16;
+                    case 16:
+                        if (jobList.length == 0) return [3 /*break*/, 14];
+                        _a.label = 17;
+                    case 17:
+                        i = 0;
+                        _a.label = 18;
+                    case 18:
+                        if (!(i < jobList.length)) return [3 /*break*/, 28];
+                        a = jobList.item(i).querySelector(".DetRight > p > a");
+                        range = void 0, count = void 0;
+                        _a.label = 19;
+                    case 19:
+                        _a.trys.push([19, 21, , 26]);
+                        range = a.title.match(/\d+\s*~\s*\d+/)[0].split("~").map(function (x) { return parseInt(x); });
+                        return [4 /*yield*/, this.getApplicantCount(a.href, range[0], range[1])];
+                    case 20:
+                        count = _a.sent();
+                        return [3 /*break*/, 26];
+                    case 21:
+                        e_3 = _a.sent();
+                        _a.label = 22;
+                    case 22:
+                        _a.trys.push([22, 24, , 25]);
+                        return [4 /*yield*/, this.getApplicantCount(a.href, 50, 100)];
+                    case 23:
+                        count = _a.sent();
+                        return [3 /*break*/, 25];
+                    case 24:
+                        e_4 = _a.sent();
+                        return [3 /*break*/, 25];
+                    case 25: return [3 /*break*/, 26];
+                    case 26:
+                        a.innerHTML = count + " \u4EBA\u61C9\u5FB5";
+                        _a.label = 27;
+                    case 27:
+                        i++;
+                        return [3 /*break*/, 18];
+                    case 28:
+                        navButton = document.querySelectorAll(".pagination > li > a");
+                        for (i = 0; i < navButton.length; i++) {
+                            THIS = this;
+                            navButton.item(i).addEventListener('click', function () { return __awaiter(_this, void 0, void 0, function () {
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0: return [4 /*yield*/, App.sleep(1000)];
+                                        case 1:
+                                            _a.sent();
+                                            THIS.initList();
+                                            return [2 /*return*/];
+                                    }
+                                });
+                            }); });
+                        }
+                        _a.label = 29;
+                    case 29: return [2 /*return*/];
                 }
             });
         });
     };
     Bank_1111.prototype.initPage = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var countInfo, countInfo2, range, count, e_2;
+            var countInfo, countInfo2, range, count, e_5;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -139,7 +213,7 @@ var Bank_1111 = (function () {
                         count = _a.sent();
                         return [3 /*break*/, 5];
                     case 3:
-                        e_2 = _a.sent();
+                        e_5 = _a.sent();
                         return [4 /*yield*/, this.getApplicantCount(countInfo.href, 50, 100)];
                     case 4:
                         count = _a.sent();

@@ -41,16 +41,52 @@ class Bank_1111 implements IBank {
 
     public async initList(): Promise<void> {
         let jobList: NodeListOf<Element> = document.querySelectorAll(".recruit > a");
-        for (let i = 0; i < jobList.length; i++) {
-            let a = (<any>jobList.item(i));
-            let range, count;
-            try {
-                range = a.title.match(/\d+\s*~\s*\d+/)[0].split("~").map(x => parseInt(x));
-                count = await this.getApplicantCount(a.href, range[0], range[1]);
-            } catch (e) {
-                count = await this.getApplicantCount(a.href, 50, 100);
+        if (jobList.length > 0) {
+            for (let i = 0; i < jobList.length; i++) {
+                let a = (<any>jobList.item(i));
+                let range, count;
+                try {
+                    range = a.title.match(/\d+\s*~\s*\d+/)[0].split("~").map(x => parseInt(x));
+                    count = await this.getApplicantCount(a.href, range[0], range[1]);
+                } catch (e) {
+                    try {
+                        count = await this.getApplicantCount(a.href, 50, 100);
+                    } catch (e) {
+
+                    }
+                }
+                jobList.item(i).innerHTML = `${count} 人應徵`;
             }
-            jobList.item(i).innerHTML = `${count} 人應徵`;
+        }else{//COM
+            await App.waitLoading();
+            do{
+                jobList = document.querySelectorAll("#showResultList > .digest");
+                await App.sleep(1000);
+            }while(jobList.length == 0)
+            for (let i = 0; i < jobList.length; i++) {//HumanBankApplicantCounter
+                let a = (<any>jobList.item(i).querySelector(".DetRight > p > a"));
+                let range, count;
+                try {
+                    range = a.title.match(/\d+\s*~\s*\d+/)[0].split("~").map(x => parseInt(x));
+                    count = await this.getApplicantCount(a.href, range[0], range[1]);
+                } catch (e) {
+                    try {
+                        count = await this.getApplicantCount(a.href, 50, 100);
+                    } catch (e) {
+
+                    }
+                }
+                a.innerHTML = `${count} 人應徵`;
+            }
+
+            var navButton = document.querySelectorAll(".pagination > li > a");
+            for(let i = 0 ; i < navButton.length ; i++){
+                var THIS = this;
+                navButton.item(i).addEventListener('click',async()=>{
+                    await App.sleep(1000);
+                    THIS.initList();                    
+                });
+            }
         }
     }
 
