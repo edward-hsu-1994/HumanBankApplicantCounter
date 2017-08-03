@@ -18,6 +18,17 @@
         },
         {
             "matches": [
+                "*://www.1111.com.tw/job/*"
+            ],
+            "js": [
+                "Http.js",
+                "Main.js",
+                "banks/Bank_1111.js",
+                "StartupPage.js"
+            ]
+        },
+        {
+            "matches": [
                 "*://www.104.com.tw/jobbank/joblist/joblist.cfm?*"
             ],
             "js": [

@@ -77,14 +77,14 @@ var Bank_1111 = (function () {
                             return [2 /*return*/, 0];
                         }
                         finalMin = 100;
-                        scriptString = targetScript.innerHTML.innerString("$(document).ready(function () {", "\r\n\r\n\r\n");
+                        scriptString = targetScript.innerHTML.innerString("{", "\n\n");
                         eval(scriptString);
                         return [2 /*return*/, Math.floor((1 / finalMin) * 100)];
                 }
             });
         });
     };
-    Bank_1111.prototype.init = function () {
+    Bank_1111.prototype.initList = function () {
         return __awaiter(this, void 0, void 0, function () {
             var jobList, i, a, range, count, e_1;
             return __generator(this, function (_a) {
@@ -100,7 +100,7 @@ var Bank_1111 = (function () {
                         _a.label = 2;
                     case 2:
                         _a.trys.push([2, 4, , 6]);
-                        range = a.title.match(/\d+ ~ \d+/)[0].split("~").map(function (x) { return parseInt(x); });
+                        range = a.title.match(/\d+\s*~\s*\d+/)[0].split("~").map(function (x) { return parseInt(x); });
                         return [4 /*yield*/, this.getApplicantCount(a.href, range[0], range[1])];
                     case 3:
                         count = _a.sent();
@@ -118,6 +118,36 @@ var Bank_1111 = (function () {
                         i++;
                         return [3 /*break*/, 1];
                     case 8: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Bank_1111.prototype.initPage = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var countInfo, countInfo2, range, count, e_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        countInfo = document.querySelector(".control>div>a");
+                        countInfo2 = document.querySelector(".initiative>a:last-child");
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 5]);
+                        range = countInfo.innerHTML.match(/\d+ ~ \d+/)[0].split("~").map(function (x) { return parseInt(x); });
+                        return [4 /*yield*/, this.getApplicantCount(countInfo.href, range[0], range[1])];
+                    case 2:
+                        count = _a.sent();
+                        return [3 /*break*/, 5];
+                    case 3:
+                        e_2 = _a.sent();
+                        return [4 /*yield*/, this.getApplicantCount(countInfo.href, 50, 100)];
+                    case 4:
+                        count = _a.sent();
+                        return [3 /*break*/, 5];
+                    case 5:
+                        countInfo.innerHTML = count + " \u4EBA\u61C9\u5FB5";
+                        countInfo2.innerHTML = count + " \u4EBA\u61C9\u5FB5";
+                        return [2 /*return*/];
                 }
             });
         });
