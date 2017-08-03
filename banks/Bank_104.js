@@ -46,7 +46,7 @@ var Bank_104 = (function () {
             });
         });
     };
-    Bank_104.prototype.init = function () {
+    Bank_104.prototype.initList = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
@@ -87,7 +87,24 @@ var Bank_104 = (function () {
             });
         });
     };
+    Bank_104.prototype.initPage = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var id, count, countInfo;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        id = document.getElementsByName("jobno")[0].value;
+                        return [4 /*yield*/, this.getApplicantCount(Bank_104.api + id, 0, 0)];
+                    case 1:
+                        count = _a.sent();
+                        countInfo = document.querySelector(".function>.sub>a");
+                        countInfo.innerHTML = count + " \u4EBA\u61C9\u5FB5";
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Bank_104.api = "https://www.104.com.tw/jb/104i/applyAnalysisToJob/sex?job_no=";
     return Bank_104;
 }());
-Bank_104.api = "https://www.104.com.tw/jb/104i/applyAnalysisToJob/sex?job_no=";
 App.counter = new Bank_104();

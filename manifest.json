@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "人力銀行應徵人數顯示",
     "description": "提供人力銀行職缺應徵者人數反推計算",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "author": "Pei-Yao Xu",
     "content_scripts": [
         {
@@ -25,6 +25,17 @@
                 "Main.js",
                 "banks/Bank_104.js",
                 "StartupList.js"
+            ]
+        },
+        {
+            "matches": [
+                "*://www.104.com.tw/job/?*"
+            ],
+            "js": [
+                "Http.js",
+                "Main.js",
+                "banks/Bank_104.js",
+                "StartupPage.js"
             ]
         }
     ],
