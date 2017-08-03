@@ -33,12 +33,12 @@ class Bank_1111 implements IBank {
             finalMin = Math.min(finalMin,temp_min);            
         }
         function $(){}//Fix not found JQuery
-        let scriptString = targetScript.innerHTML.innerString("$(document).ready(function () {","if");
+        let scriptString = targetScript.innerHTML.innerString("$(document).ready(function () {","\r\n\r\n\r\n");
         eval(scriptString);
         return Math.floor((1/finalMin) * 100);
     }
 
-    public async init(): Promise<void>{
+    public async initList(): Promise<void>{
         let jobList : NodeListOf<Element> = document.querySelectorAll(".recruit > a");        
         for(let i = 0 ; i < jobList.length; i++){
             let a = (<any>jobList.item(i));
