@@ -34,7 +34,7 @@ class Bank_1111 implements IBank {
             finalMin = Math.min(finalMin, temp_min);
         }
         function $() { }//Fix not found JQuery
-        let scriptString = targetScript.innerHTML.innerString("{", "\n\n");
+        let scriptString = "CreatePie" + targetScript.innerHTML.innerString("CreatePie", "\n\n");
         eval(scriptString);
         return Math.floor((1 / finalMin) * 100);
     }

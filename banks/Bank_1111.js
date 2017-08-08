@@ -77,7 +77,7 @@ var Bank_1111 = (function () {
                             return [2 /*return*/, 0];
                         }
                         finalMin = 100;
-                        scriptString = targetScript.innerHTML.innerString("{", "\n\n");
+                        scriptString = "CreatePie" + targetScript.innerHTML.innerString("CreatePie", "\n\n");
                         eval(scriptString);
                         return [2 /*return*/, Math.floor((1 / finalMin) * 100)];
                 }
