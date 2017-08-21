@@ -51,13 +51,13 @@ var Bank_104 = (function () {
             var _this = this;
             return __generator(this, function (_a) {
                 this.scrollFunction = function () { return __awaiter(_this, void 0, void 0, function () {
-                    var jobList, i, job, id, countInfo, count;
+                    var jobList, i, job, id, temp, countInfo, count;
                     return __generator(this, function (_a) {
                         switch (_a.label) {
                             case 0:
                                 jobList = document.querySelectorAll(".j_cont");
                                 if (jobList.length == 0) {
-                                    jobList = document.querySelectorAll(".candidates_summary > a");
+                                    jobList = document.querySelectorAll(".job-list-item");
                                 }
                                 if (jobList.length == 0) {
                                     jobList = document.querySelectorAll(".joblist_cont");
@@ -73,11 +73,20 @@ var Bank_104 = (function () {
                                     return [3 /*break*/, 3];
                                 job['HumanBankApplicantCounter'] = true;
                                 id = job.getAttribute("id");
-                                if (!/^\d+$/.test(id))
-                                    id = jobList[i].querySelector("input[name='to_cookie']").value;
+                                if (!/^\d+$/.test(id)) {
+                                    temp = jobList[i].querySelector("input[name='to_cookie']");
+                                    if (temp == null) {
+                                        id = jobList[i].getAttribute("data-job-no");
+                                    }
+                                    else {
+                                        id = temp.value;
+                                    }
+                                }
                                 countInfo = jobList[i].querySelector(".candidates_summary>a");
                                 if (countInfo == null)
                                     countInfo = jobList[i].querySelector(".float_R > a");
+                                if (countInfo == null)
+                                    countInfo = jobList[i].querySelector(".gtm-list-apply");
                                 return [4 /*yield*/, this.getApplicantCount(Bank_104.api + id, 0, 0)];
                             case 2:
                                 count = _a.sent();

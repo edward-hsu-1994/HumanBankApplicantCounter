@@ -9,7 +9,7 @@ class Bank_104 implements IBank {
         this.scrollFunction = async () => {
             let jobList: NodeListOf<Element> = document.querySelectorAll(".j_cont");
             if(jobList.length ==0){
-                jobList = document.querySelectorAll(".candidates_summary > a");
+                jobList = document.querySelectorAll(".job-list-item");
             }
             if(jobList.length ==0){
                 jobList = document.querySelectorAll(".joblist_cont");
@@ -22,10 +22,18 @@ class Bank_104 implements IBank {
                 job['HumanBankApplicantCounter'] = true;
 
                 let id = job.getAttribute("id");
-                if(!/^\d+$/.test(id))id=(<any>jobList[i].querySelector("input[name='to_cookie']")).value;
+                if(!/^\d+$/.test(id)){
+                    var temp = (<any>jobList[i].querySelector("input[name='to_cookie']"));
+                    if(temp == null){
+                        id = jobList[i].getAttribute("data-job-no");
+                    } else {
+                        id = temp.value;
+                    }                    
+                }
 
                 let countInfo = jobList[i].querySelector(".candidates_summary>a");
-                if(countInfo ==null) countInfo = jobList[i].querySelector(".float_R > a");
+                if(countInfo == null) countInfo = jobList[i].querySelector(".float_R > a");
+                if(countInfo == null) countInfo = jobList[i].querySelector(".gtm-list-apply");
                 let count = await this.getApplicantCount(Bank_104.api + id, 0, 0);
                 try {
                     countInfo.innerHTML = `${count} 人應徵`;

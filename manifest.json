@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "人力銀行應徵人數顯示",
     "description": "提供人力銀行職缺應徵者人數反推計算",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "author": "Pei-Yao Xu",
     "content_scripts": [
         {
@@ -57,7 +57,8 @@
         },
         {
             "matches": [
-                "*://www.104.com.tw/jobbank/joblist/joblist.cfm?*"
+                "*://www.104.com.tw/jobbank/joblist/joblist.cfm?*",
+                "*://www.104.com.tw/jobs/search/?*"
             ],
             "js": [
                 "StartupList.js"
