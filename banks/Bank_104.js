@@ -57,6 +57,9 @@ var Bank_104 = (function () {
                             case 0:
                                 jobList = document.querySelectorAll(".j_cont");
                                 if (jobList.length == 0) {
+                                    jobList = document.querySelectorAll(".candidates_summary > a");
+                                }
+                                if (jobList.length == 0) {
                                     jobList = document.querySelectorAll(".joblist_cont");
                                 }
                                 i = 0;
@@ -113,7 +116,7 @@ var Bank_104 = (function () {
             });
         });
     };
-    Bank_104.api = "https://www.104.com.tw/jb/104i/applyAnalysisToJob/sex?job_no=";
     return Bank_104;
 }());
+Bank_104.api = "https://www.104.com.tw/jb/104i/applyAnalysisToJob/sex?job_no=";
 App.counter = new Bank_104();

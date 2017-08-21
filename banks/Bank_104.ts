@@ -9,6 +9,9 @@ class Bank_104 implements IBank {
         this.scrollFunction = async () => {
             let jobList: NodeListOf<Element> = document.querySelectorAll(".j_cont");
             if(jobList.length ==0){
+                jobList = document.querySelectorAll(".candidates_summary > a");
+            }
+            if(jobList.length ==0){
                 jobList = document.querySelectorAll(".joblist_cont");
             }
             for (let i = 0; i < jobList.length; i++) {
