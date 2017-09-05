@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "人力銀行應徵人數顯示",
     "description": "提供人力銀行職缺應徵者人數反推計算",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "author": "Pei-Yao Xu",
     "content_scripts": [
         {
@@ -33,7 +33,8 @@
         },
         {
             "matches": [
-                "*://www.1111.com.tw/corp/*"
+                "*://www.1111.com.tw/corp/*",
+                "*://www.1111.com.tw/job-bank/company-description.asp?nNo=*"
             ],
             "js": [
                 "StartupList.js"
