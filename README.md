@@ -1,4 +1,4 @@
-# HumanBankApplicantCounter
+# HumanBankApplicantCounter [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/mlmihhiijcegoachbijmjokplemdjbcc.svg)]() [![Chrome Web Store](https://img.shields.io/chrome-web-store/users/mlmihhiijcegoachbijmjokplemdjbcc.svg)]()
 本代碼庫為Chrome擴充元件專案，提供人力銀行應徵人數計算(推算)。
 在台灣許多人力銀行的工作項目中，大多在應徵人數的顯示都是使用一個區間代表(例如:0~10人應徵)，為了更方便得知應徵人數，這個擴充元件提供使用者可以明確知道應徵該工作的人數。
 
